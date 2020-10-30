@@ -1,0 +1,25 @@
+# 描述
+基于jenkins 插件 Role-based Authorization Strategy 自动设置权限和组
+设置三级权限，项目越多，人工操作简直不忍直视，
+```
+common:
+  connector: _
+  pattern: .*
+  env:
+  - dev
+  - test
+  - prod
+
+{your-project-name}:
+  sids:
+    {your-user-name}:
+      global: 
+      - item
+      project: 
+      - {your-project-name}                     
+      - {your-project-name}_{your-server_A}
+      - {your-project-name}_{your-server_A}_{env}
+  items:
+  - {your-server_A}
+  - {your-server_B}
+```
